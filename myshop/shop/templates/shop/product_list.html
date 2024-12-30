@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .product {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product:last-child {
+            border-bottom: none;
+        }
+        .product h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #444;
+        }
+        .product p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2a9d8f;
+        }
+        .add-product {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #2a9d8f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .add-product:hover {
+            background-color: #21867a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Danh sách sản phẩm</h1>
+        
+        <a href="{% url 'add_product' %}" class="add-product">Đăng sản phẩm mới</a>
+
+        {% if products %}
+            {% for product in products %}
+                <div class="product">
+                    <div>
+                        <h2>{{ product.name }}</h2>
+                        <p>{{ product.description }}</p>
+                        <p>Người bán: {{ product.seller.username }}</p>
+                    </div>
+                    <div class="product-price">
+                        {{ product.price }} VND
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Hiện chưa có sản phẩm nào.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

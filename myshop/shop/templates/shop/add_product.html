@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng sản phẩm</title>
+</head>
+<body>
+    <h2>Đăng sản phẩm</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Đăng sản phẩm</button>
+    </form>
+</body>
+</html>
